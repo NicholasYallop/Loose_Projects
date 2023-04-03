@@ -1,26 +1,44 @@
 ﻿using Microsoft.ML;
+using Microsoft.ML.Vision;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Linq;
 
 internal class Program
 {
     private static void Main(string[] args)
     {
-        var csvFilename = "data/mnist_train.csv";
+        var trainCSVFilename = "data/mnist_train.csv";
+        var testCSVFilename = "data/mnist_train.csv";
 
-        bool createNewModel = false;
-        bool refreshCrossval = false;
+        bool createNewModel = true;
+        bool refreshCrossval = true;
 
         int crossvalFolds = 5;
 
-        var mlContext = new MLContext();
+        var mlContext = new MLContext(seed: 1);
+        var hold = mlContext.MulticlassClassification.Trainers.ImageClassification();
 
-        IDataView? trainData = DataReader.Build<NumberMatrix>(mlContext, csvFilename);
-        if (trainData is null) return;
+        IDataView? trainData = DataReader.Build<NumberMatrix>(mlContext, trainCSVFilename);
+        IDataView? testData = DataReader.Build<NumberMatrix>(mlContext, testCSVFilename);
+        if (trainData is null || testData is null) return;
         DataViewSchema trainDataSchema = trainData.Schema; 
 
-        IEstimator<ITransformer>? estimator = mlContext.MulticlassClassification.Trainers.SdcaMaximumEntropy();
+        var options = new ImageClassificationTrainer.Options(){
+                FeatureColumnName = "Image",
+                LabelColumnName = "Label",
+                // Just by changing/selecting InceptionV3/MobilenetV2/ResnetV250
+                // here instead of ResnetV2101 you can try a different 
+                // architecture/ pre-trained model. 
+                Arch = ImageClassificationTrainer.Architecture.ResnetV2101,
+                Epoch = 50,
+                BatchSize = 10,
+                LearningRate = 0.01f,
+                MetricsCallback = (metrics) => Console.WriteLine(metrics),
+                ValidationSetFraction = 0.1f,
+                // Disable EarlyStopping to run to specified number of epochs.
+                EarlyStoppingCriteria = null
+            };
+        IEstimator<ITransformer>? estimator = mlContext.MulticlassClassification.Trainers.ImageClassification();
         ITransformer trainedModel;
 
         if (createNewModel){
