@@ -9,7 +9,9 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.ML" Version="2.0.1" />
+    <PackageReference Include="Microsoft.ML.Vision" Version="2.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="scisharp.tensorflow.redist" Version="2.11.0" />
     <PackageReference Include="System.Linq" Version="4.3.0" />
   </ItemGroup>
 

@@ -7,7 +7,7 @@ public class NumberMatrix{
     public UInt32 label;
 
     [LoadColumn(1, 784)]
-    [VectorType(784)]
+    [VectorType()]
     [ColumnName("Features")]
-    public float[]? Pixels {get;set;}
+    public byte[]? Pixels {get;set;}
 }
