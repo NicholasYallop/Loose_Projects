@@ -1,6 +1,7 @@
 ﻿using Microsoft.ML;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Linq;
 
 internal class Program
 {
@@ -82,7 +83,14 @@ internal class Program
             }
         }
 
-        var pcp = customCrossValResults[0].Metrics["ConfusionMatrix"]["PerClassPrecision"];
-        var pcc = customCrossValResults[0].Metrics["ConfusionMatrix"]["PerClassRecall"];
+        var pcp = customCrossValResults.Select(fold => fold.Metrics["ConfusionMatrix"]["PerClassPrecision"]);
+        var bestAvgPrecision = customCrossValResults
+                    .Select(fold => fold.Metrics["ConfusionMatrix"]["PerClassPrecision"])
+                    .Select(ClasswidePrecision => ClasswidePrecision.Values<decimal>()).Max(x => x.Sum()/10);
+
+        var pcr = customCrossValResults.Select(fold => fold.Metrics["ConfusionMatrix"]["PerClassRecall"]);
+        var bestAvgRecall = customCrossValResults
+                    .Select(fold => fold.Metrics["ConfusionMatrix"]["PerClassRecall"])
+                    .Select(ClasswidePrecision => ClasswidePrecision.Values<decimal>()).Max(x => x.Sum()/10);
     }
 }
