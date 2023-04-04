@@ -1,0 +1,145 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/work/Repos/Loose_Projects/NoughtToNineFrontend/NoughtToNineFrontend.csproj": {}
+  },
+  "projects": {
+    "/home/work/Repos/Loose_Projects/NoughtToNine/NoughtToNine.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/work/Repos/Loose_Projects/NoughtToNine/NoughtToNine.csproj",
+        "projectName": "NoughtToNine",
+        "projectPath": "/home/work/Repos/Loose_Projects/NoughtToNine/NoughtToNine.csproj",
+        "packagesPath": "/home/work/.nuget/packages/",
+        "outputPath": "/home/work/Repos/Loose_Projects/NoughtToNine/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/work/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.ML": {
+              "target": "Package",
+              "version": "[2.0.1, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "System.Linq": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/work/Repos/Loose_Projects/NoughtToNineFrontend/NoughtToNineFrontend.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/work/Repos/Loose_Projects/NoughtToNineFrontend/NoughtToNineFrontend.csproj",
+        "projectName": "NoughtToNineFrontend",
+        "projectPath": "/home/work/Repos/Loose_Projects/NoughtToNineFrontend/NoughtToNineFrontend.csproj",
+        "packagesPath": "/home/work/.nuget/packages/",
+        "outputPath": "/home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/work/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/home/work/Repos/Loose_Projects/NoughtToNine/NoughtToNine.csproj": {
+                "projectPath": "/home/work/Repos/Loose_Projects/NoughtToNine/NoughtToNine.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Blazor.Extensions.Canvas": {
+              "target": "Package",
+              "version": "[1.1.1, )"
+            },
+            "Microsoft.AspNetCore.Components.QuickGrid": {
+              "target": "Package",
+              "version": "[8.0.0-preview.2.23153.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

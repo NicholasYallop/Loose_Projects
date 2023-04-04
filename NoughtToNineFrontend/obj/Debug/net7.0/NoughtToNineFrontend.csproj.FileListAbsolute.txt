@@ -1,0 +1,8 @@
+/home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/Debug/net7.0/NoughtToNineFrontend.csproj.AssemblyReference.cache
+/home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/Debug/net7.0/NoughtToNineFrontend.GeneratedMSBuildEditorConfig.editorconfig
+/home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/Debug/net7.0/NoughtToNineFrontend.AssemblyInfoInputs.cache
+/home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/Debug/net7.0/NoughtToNineFrontend.AssemblyInfo.cs
+/home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/Debug/net7.0/NoughtToNineFrontend.csproj.CoreCompileInputs.cache
+/home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/Debug/net7.0/NoughtToNineFrontend.MvcApplicationPartsAssemblyInfo.cache
+/home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/Debug/net7.0/NoughtToNineFrontend.RazorAssemblyInfo.cache
+/home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/Debug/net7.0/NoughtToNineFrontend.RazorAssemblyInfo.cs
