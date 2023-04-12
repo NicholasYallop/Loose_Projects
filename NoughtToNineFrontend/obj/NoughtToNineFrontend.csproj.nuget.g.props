@@ -13,7 +13,6 @@
     <SourceRoot Include="/home/work/.nuget/packages/" />
   </ItemGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.components.quickgrid/8.0.0-preview.2.23153.2/buildTransitive/Microsoft.AspNetCore.Components.QuickGrid.props" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.components.quickgrid/8.0.0-preview.2.23153.2/buildTransitive/Microsoft.AspNetCore.Components.QuickGrid.props')" />
     <Import Project="$(NuGetPackageRoot)blazor.extensions.canvas/1.1.1/buildTransitive/Blazor.Extensions.Canvas.props" Condition="Exists('$(NuGetPackageRoot)blazor.extensions.canvas/1.1.1/buildTransitive/Blazor.Extensions.Canvas.props')" />
   </ImportGroup>
 </Project>

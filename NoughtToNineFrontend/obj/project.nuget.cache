@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "dU0tL5DkXNUmbv8NcbzKqOCJH+1VggtND3DpLL5xgedeRet1pWK8/SC2D9+u6rNaRcTHv6DBBGzuebBjefMRHg==",
+  "dgSpecHash": "Qn7PM3SJywKh4UhPfqeGAO38NZbc7lq4A8BBV+GDpkIalgREwZZE/9bU0B0TGoCgJiRVAZjcPAIKoRV43v6RdA==",
   "success": true,
   "projectFilePath": "/home/work/Repos/Loose_Projects/NoughtToNineFrontend/NoughtToNineFrontend.csproj",
   "expectedPackageFiles": [
@@ -9,7 +9,6 @@
     "/home/work/.nuget/packages/microsoft.aspnetcore.components/3.1.5/microsoft.aspnetcore.components.3.1.5.nupkg.sha512",
     "/home/work/.nuget/packages/microsoft.aspnetcore.components.analyzers/3.1.5/microsoft.aspnetcore.components.analyzers.3.1.5.nupkg.sha512",
     "/home/work/.nuget/packages/microsoft.aspnetcore.components.forms/3.1.5/microsoft.aspnetcore.components.forms.3.1.5.nupkg.sha512",
-    "/home/work/.nuget/packages/microsoft.aspnetcore.components.quickgrid/8.0.0-preview.2.23153.2/microsoft.aspnetcore.components.quickgrid.8.0.0-preview.2.23153.2.nupkg.sha512",
     "/home/work/.nuget/packages/microsoft.aspnetcore.components.web/3.1.5/microsoft.aspnetcore.components.web.3.1.5.nupkg.sha512",
     "/home/work/.nuget/packages/microsoft.aspnetcore.metadata/3.1.5/microsoft.aspnetcore.metadata.3.1.5.nupkg.sha512",
     "/home/work/.nuget/packages/microsoft.extensions.dependencyinjection/3.1.5/microsoft.extensions.dependencyinjection.3.1.5.nupkg.sha512",

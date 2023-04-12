@@ -84,15 +84,6 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.QuickGrid/8.0.0-preview.2.23153.2": {
-        "type": "package",
-        "build": {
-          "buildTransitive/Microsoft.AspNetCore.Components.QuickGrid.props": {}
-        },
-        "buildMultiTargeting": {
-          "buildMultiTargeting/Microsoft.AspNetCore.Components.QuickGrid.props": {}
-        }
-      },
       "Microsoft.AspNetCore.Components.Web/3.1.5": {
         "type": "package",
         "dependencies": {
@@ -645,6 +636,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
+          "Blazor.Extensions.Canvas": "1.1.1",
           "Microsoft.ML": "2.0.1",
           "Newtonsoft.Json": "13.0.3",
           "System.Linq": "4.3.0"
@@ -743,27 +735,6 @@
         "lib/netstandard2.0/Microsoft.AspNetCore.Components.Forms.xml",
         "microsoft.aspnetcore.components.forms.3.1.5.nupkg.sha512",
         "microsoft.aspnetcore.components.forms.nuspec"
-      ]
-    },
-    "Microsoft.AspNetCore.Components.QuickGrid/8.0.0-preview.2.23153.2": {
-      "sha512": "CsrAFtlo5DjqeaJ9fpH7W54t15IRU4mVyBxxTxaSPBxHdUKa+EnZNUJMZUs7JtYOzqbeLi2icr32kFiIXgfqng==",
-      "type": "package",
-      "path": "microsoft.aspnetcore.components.quickgrid/8.0.0-preview.2.23153.2",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "THIRD-PARTY-NOTICES.txt",
-        "build/Microsoft.AspNetCore.Components.QuickGrid.props",
-        "build/Microsoft.AspNetCore.StaticWebAssets.props",
-        "buildMultiTargeting/Microsoft.AspNetCore.Components.QuickGrid.props",
-        "buildTransitive/Microsoft.AspNetCore.Components.QuickGrid.props",
-        "lib/net8.0/Microsoft.AspNetCore.Components.QuickGrid.dll",
-        "lib/net8.0/Microsoft.AspNetCore.Components.QuickGrid.xml",
-        "microsoft.aspnetcore.components.quickgrid.8.0.0-preview.2.23153.2.nupkg.sha512",
-        "microsoft.aspnetcore.components.quickgrid.nuspec",
-        "staticwebassets/Microsoft.AspNetCore.Components.QuickGrid.bundle.scp.css",
-        "staticwebassets/QuickGrid.razor.js"
       ]
     },
     "Microsoft.AspNetCore.Components.Web/3.1.5": {
@@ -2089,7 +2060,6 @@
   "projectFileDependencyGroups": {
     "net7.0": [
       "Blazor.Extensions.Canvas >= 1.1.1",
-      "Microsoft.AspNetCore.Components.QuickGrid >= 8.0.0-preview.2.23153.2",
       "NoughtToNine >= 1.0.0"
     ]
   },
@@ -2137,10 +2107,6 @@
           "Blazor.Extensions.Canvas": {
             "target": "Package",
             "version": "[1.1.1, )"
-          },
-          "Microsoft.AspNetCore.Components.QuickGrid": {
-            "target": "Package",
-            "version": "[8.0.0-preview.2.23153.2, )"
           }
         },
         "imports": [
@@ -2162,7 +2128,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.203/RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,8 +1,123 @@
 ﻿@page "/The_Eye"
+@inject IJSRuntime JS
 
 <PageTitle>The Eye</PageTitle>
 
 <h1>Go on, just try and draw a 1-digit number</h1>
 
+<div tabindex="0" @onclick="CanvasClick">
+    <BECanvas Width="300" Height="400" @ref="_canvasReference"></BECanvas>
+
+    <p>You clicked (x: @mouseX, y: @mouseY)</p>
+</div>
+
+<button @onclick="ExportImage"/>
+
+<p>@dataURL</p>
+
 @code {
+    private double? mouseX;
+
+    private double? mouseXCache;
+
+    private double? mouseY;
+
+    private double? mouseYCache;
+
+    private string dataURL;
+
+    private Canvas2DContext _context;
+
+    protected BECanvasComponent _canvasReference;
+
+    protected bool CanvasLoaded = false;
+
+    protected async Task ExportImage(MouseEventArgs mea){
+        this.dataURL = await JS.InvokeAsync<string>(
+            "MyCanvasGetDataURL", 
+            this._canvasReference.CanvasReference
+            );
+
+        var imageURL = Convert.FromBase64String(dataURL.Replace("data:image/png;base64,", string.Empty));
+
+        StreamWriter sr = new StreamWriter("images/canvasImage.png");
+        BinaryWriter br = new BinaryWriter(sr.BaseStream);
+        br.Write(imageURL);
+        sr.Dispose();
+        br.Dispose();
+    }
+
+    protected async Task CanvasClick(MouseEventArgs mea){        
+        var boundRect = await JS.InvokeAsync<BoundingClientRect>(
+            "MyDOMGetBoundingClientRect", 
+            this._canvasReference.CanvasReference
+            );
+
+        var floatingClickpointX = mea.ClientX - boundRect.Left;
+        var floatingClickpointY = mea.ClientY - boundRect.Top;
+
+        if (floatingClickpointX > 0 && 300 > floatingClickpointX){
+            this.mouseX = floatingClickpointX;
+        }
+        else{
+            this.mouseX = null;
+        }
+
+        if (floatingClickpointY > 0 && 300 > floatingClickpointY){
+            this.mouseY = floatingClickpointY;
+        }
+        else{
+            this.mouseY = null;
+        }
+
+        if (this.mouseX == null || this.mouseY == null){
+            return;
+        }
+
+        double X = this.mouseX ?? -1;
+        double Y = this.mouseY ?? -1;
+
+        // await this._context.FillRectAsync(X - 5 , Y - 5, 10, 10);
+        if (mouseXCache is null || mouseYCache is null){
+            await this._context.BeginPathAsync();
+            await this._context.MoveToAsync(X, Y);
+        }
+        else{
+            await this._context.LineToAsync(X, Y);
+            await this._context.StrokeAsync();
+        }
+
+        mouseXCache = X;
+        mouseYCache = Y;
+    }
+    
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender){
+            this._context = await this._canvasReference.CreateCanvas2DAsync();
+
+            await this._context.SetFillStyleAsync("black");
+            await this._context.FillRectAsync(0, 0, 300, 300);
+
+            await this._context.SetFillStyleAsync("white");
+            await this._context.FillRectAsync(5, 5, 290, 290);
+
+            await this._context.SetFillStyleAsync("grey");
+
+            await this._context.SetStrokeStyleAsync("grey");
+            await this._context.SetLineWidthAsync(10);
+        }
+    }
+
+    public class BoundingClientRect
+    {
+        public double X { get; set; }
+        public double Y { get; set; }
+        public double Width { get; set; }
+        public double Height { get; set; }
+        public double Top { get; set; }
+        public double Right { get; set; }
+        public double Bottom { get; set; }
+        public double Left { get; set; }
+    }
 }
