@@ -77,17 +77,23 @@
             rowcount++;
         }));
 
+        var greatestPixelValue = (inputList.Max() != 0) ? -1 : inputList.Max();
+        inputList.ForEach(pixel => pixel = pixel / greatestPixelValue);
+
         NoughtToNine.ModelInput input = new(){ Pixels = inputList.ToArray() };
 
         pixelArrayDims = input.Pixels.Length;
         nonMinMaxPixelCount = input.Pixels.Count(pixel => pixel > 0.1);
 
-        var predictionEngine = MLContext.Model.CreatePredictionEngine<NoughtToNine.ModelInput, NoughtToNine.ModelOutput>(Transformer);
+
+        var predictionEngine = 
+            MLContext.Model.CreatePredictionEngine<NoughtToNine.ModelInput, NoughtToNine.ModelOutput>
+            (Transformer, inputSchemaDefinition: Microsoft.ML.Data.SchemaDefinition.Create(typeof(NoughtToNine.ModelInput)));
 
         NoughtToNine.ModelOutput output = null;
         predictionEngine.Predict(input, ref output);
 
-        this.Prediction = output.label;
+        this.Prediction = output.PredictedLabel;
     }
 
     protected async Task ExportImage(MouseEventArgs mea){

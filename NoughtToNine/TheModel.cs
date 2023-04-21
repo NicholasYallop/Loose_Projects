@@ -4,7 +4,15 @@ namespace NoughtToNine{
     public static class TheModel{
         const string csvFilename = "data/mnist_train.csv";
 
-        public static DataViewSchema? trainDataSchema;
+        private static DataViewSchema? _trainDataSchema;
+
+        public static DataViewSchema? trainDataSchema{
+            get {
+                if (_trainDataSchema == null) PopulateModel();   
+                return _trainDataSchema;
+            }
+            private set {_trainDataSchema = value;}
+        }
 
         public static MLContext? mlContext{
             get {
@@ -14,9 +22,9 @@ namespace NoughtToNine{
             private set {_mlContext = value;}
         }
 
-        public static MLContext? _mlContext = new MLContext();
+        private static MLContext? _mlContext = new MLContext();
 
-        static ITransformer? _transformer;
+        private static ITransformer? _transformer;
 
         public static ITransformer? Transformer {
             get {
@@ -47,7 +55,7 @@ namespace NoughtToNine{
             else{
                 var sr = new StreamReader("/home/work/Repos/Loose_Projects/NoughtToNine/saves/model.zip"); 
 
-                trainedModel = mlContext.Model.Load(sr.BaseStream, out trainDataSchema);
+                trainedModel = mlContext.Model.Load(sr.BaseStream, out _trainDataSchema);
 
                 sr.Dispose();
             }

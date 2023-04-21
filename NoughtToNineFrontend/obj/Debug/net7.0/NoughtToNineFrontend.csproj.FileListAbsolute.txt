@@ -1,11 +1,3 @@
-/home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/Debug/net7.0/NoughtToNineFrontend.csproj.AssemblyReference.cache
-/home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/Debug/net7.0/NoughtToNineFrontend.GeneratedMSBuildEditorConfig.editorconfig
-/home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/Debug/net7.0/NoughtToNineFrontend.AssemblyInfoInputs.cache
-/home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/Debug/net7.0/NoughtToNineFrontend.AssemblyInfo.cs
-/home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/Debug/net7.0/NoughtToNineFrontend.csproj.CoreCompileInputs.cache
-/home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/Debug/net7.0/NoughtToNineFrontend.MvcApplicationPartsAssemblyInfo.cache
-/home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/Debug/net7.0/NoughtToNineFrontend.RazorAssemblyInfo.cache
-/home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/Debug/net7.0/NoughtToNineFrontend.RazorAssemblyInfo.cs
 /home/work/Repos/Loose_Projects/NoughtToNineFrontend/bin/Debug/net7.0/NoughtToNine.deps.json
 /home/work/Repos/Loose_Projects/NoughtToNineFrontend/bin/Debug/net7.0/NoughtToNine.runtimeconfig.json
 /home/work/Repos/Loose_Projects/NoughtToNineFrontend/bin/Debug/net7.0/NoughtToNine
@@ -29,6 +21,7 @@
 /home/work/Repos/Loose_Projects/NoughtToNineFrontend/bin/Debug/net7.0/Microsoft.ML.CpuMath.dll
 /home/work/Repos/Loose_Projects/NoughtToNineFrontend/bin/Debug/net7.0/Microsoft.ML.DataView.dll
 /home/work/Repos/Loose_Projects/NoughtToNineFrontend/bin/Debug/net7.0/Newtonsoft.Json.dll
+/home/work/Repos/Loose_Projects/NoughtToNineFrontend/bin/Debug/net7.0/SixLabors.ImageSharp.dll
 /home/work/Repos/Loose_Projects/NoughtToNineFrontend/bin/Debug/net7.0/System.CodeDom.dll
 /home/work/Repos/Loose_Projects/NoughtToNineFrontend/bin/Debug/net7.0/runtimes/linux-arm/native/libLdaNative.so
 /home/work/Repos/Loose_Projects/NoughtToNineFrontend/bin/Debug/net7.0/runtimes/linux-arm64/native/libLdaNative.so
@@ -39,6 +32,14 @@
 /home/work/Repos/Loose_Projects/NoughtToNineFrontend/bin/Debug/net7.0/runtimes/win-x86/native/LdaNative.dll
 /home/work/Repos/Loose_Projects/NoughtToNineFrontend/bin/Debug/net7.0/NoughtToNine.dll
 /home/work/Repos/Loose_Projects/NoughtToNineFrontend/bin/Debug/net7.0/NoughtToNine.pdb
+/home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/Debug/net7.0/NoughtToNineFrontend.csproj.AssemblyReference.cache
+/home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/Debug/net7.0/NoughtToNineFrontend.GeneratedMSBuildEditorConfig.editorconfig
+/home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/Debug/net7.0/NoughtToNineFrontend.AssemblyInfoInputs.cache
+/home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/Debug/net7.0/NoughtToNineFrontend.AssemblyInfo.cs
+/home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/Debug/net7.0/NoughtToNineFrontend.csproj.CoreCompileInputs.cache
+/home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/Debug/net7.0/NoughtToNineFrontend.MvcApplicationPartsAssemblyInfo.cache
+/home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/Debug/net7.0/NoughtToNineFrontend.RazorAssemblyInfo.cache
+/home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/Debug/net7.0/NoughtToNineFrontend.RazorAssemblyInfo.cs
 /home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/Debug/net7.0/staticwebassets/msbuild.NoughtToNineFrontend.Microsoft.AspNetCore.StaticWebAssets.props
 /home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/Debug/net7.0/staticwebassets/msbuild.build.NoughtToNineFrontend.props
 /home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/Debug/net7.0/staticwebassets/msbuild.buildMultiTargeting.NoughtToNineFrontend.props
@@ -56,4 +57,3 @@
 /home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/Debug/net7.0/NoughtToNineFrontend.pdb
 /home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/Debug/net7.0/NoughtToNineFrontend.genruntimeconfig.cache
 /home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/Debug/net7.0/ref/NoughtToNineFrontend.dll
-/home/work/Repos/Loose_Projects/NoughtToNineFrontend/bin/Debug/net7.0/SixLabors.ImageSharp.dll
