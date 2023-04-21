@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Qn7PM3SJywKh4UhPfqeGAO38NZbc7lq4A8BBV+GDpkIalgREwZZE/9bU0B0TGoCgJiRVAZjcPAIKoRV43v6RdA==",
+  "dgSpecHash": "iK3btqlSLjFQ3LRcU1vrzM+e8Zi3ZKQXZzLWtgbL3Jqdx35hDQJjX+2N2lW9ExORM0FVqh1sXW4DBVMwv3HZUw==",
   "success": true,
   "projectFilePath": "/home/work/Repos/Loose_Projects/NoughtToNineFrontend/NoughtToNineFrontend.csproj",
   "expectedPackageFiles": [
@@ -23,6 +23,7 @@
     "/home/work/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "/home/work/.nuget/packages/microsoft.netcore.targets/1.1.0/microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "/home/work/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512",
+    "/home/work/.nuget/packages/sixlabors.imagesharp/3.0.1/sixlabors.imagesharp.3.0.1.nupkg.sha512",
     "/home/work/.nuget/packages/system.codedom/4.5.0/system.codedom.4.5.0.nupkg.sha512",
     "/home/work/.nuget/packages/system.collections/4.3.0/system.collections.4.3.0.nupkg.sha512",
     "/home/work/.nuget/packages/system.collections.immutable/1.5.0/system.collections.immutable.1.5.0.nupkg.sha512",

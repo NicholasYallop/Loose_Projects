@@ -56,3 +56,4 @@
 /home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/Debug/net7.0/NoughtToNineFrontend.pdb
 /home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/Debug/net7.0/NoughtToNineFrontend.genruntimeconfig.cache
 /home/work/Repos/Loose_Projects/NoughtToNineFrontend/obj/Debug/net7.0/ref/NoughtToNineFrontend.dll
+/home/work/Repos/Loose_Projects/NoughtToNineFrontend/bin/Debug/net7.0/SixLabors.ImageSharp.dll

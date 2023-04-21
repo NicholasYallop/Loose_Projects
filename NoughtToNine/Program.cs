@@ -16,7 +16,7 @@ internal class Program
 
         var mlContext = new MLContext();
 
-        IDataView? trainData = DataReader.Build<NumberMatrix>(mlContext, csvFilename);
+        IDataView? trainData = DataReader.Build<NoughtToNine.NumberMatrix>(mlContext, csvFilename);
         if (trainData is null) return;
         DataViewSchema trainDataSchema = trainData.Schema; 
 

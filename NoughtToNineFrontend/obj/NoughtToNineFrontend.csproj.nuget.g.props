@@ -13,6 +13,7 @@
     <SourceRoot Include="/home/work/.nuget/packages/" />
   </ItemGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)sixlabors.imagesharp/3.0.1/build/SixLabors.ImageSharp.props" Condition="Exists('$(NuGetPackageRoot)sixlabors.imagesharp/3.0.1/build/SixLabors.ImageSharp.props')" />
     <Import Project="$(NuGetPackageRoot)blazor.extensions.canvas/1.1.1/buildTransitive/Blazor.Extensions.Canvas.props" Condition="Exists('$(NuGetPackageRoot)blazor.extensions.canvas/1.1.1/buildTransitive/Blazor.Extensions.Canvas.props')" />
   </ImportGroup>
 </Project>

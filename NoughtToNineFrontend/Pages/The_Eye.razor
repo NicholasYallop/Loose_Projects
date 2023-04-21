@@ -1,4 +1,6 @@
 ﻿@page "/The_Eye"
+@using Microsoft.ML
+<!-- @using System.Drawing -->
 @inject IJSRuntime JS
 
 <PageTitle>The Eye</PageTitle>
@@ -6,16 +8,32 @@
 <h1>Go on, just try and draw a 1-digit number</h1>
 
 <div tabindex="0" @onclick="CanvasClick">
-    <BECanvas Width="300" Height="400" @ref="_canvasReference"></BECanvas>
+    <BECanvas Width="@canvasDimensionLength" Height="@canvasDimensionLength" @ref="_canvasReference"></BECanvas>
 
     <p>You clicked (x: @mouseX, y: @mouseY)</p>
 </div>
 
-<button @onclick="ExportImage"/>
+<button @onclick="ExportImage">Export Image</button>
+<button @onclick="PredictImage">Predict Image</button>
+
+<p>pixel row length @pixelRowLength</p>
+<p>pixel array length @pixelArrayDims</p>
+<p>interesting pixel count @nonMinMaxPixelCount</p>
+<p>I think that's a @Prediction</p>
 
 <p>@dataURL</p>
 
 @code {
+    private int imageDimensionLength = 28;
+
+    private int canvasDimensionLength => imageDimensionLength + 2;
+
+    private int pixelArrayDims = -1;
+
+    private int pixelRowLength = -1;
+
+    private int nonMinMaxPixelCount = -1;
+
     private double? mouseX;
 
     private double? mouseXCache;
@@ -26,11 +44,51 @@
 
     private string dataURL;
 
+    private const string imageLocation = "images/canvasImage.png";
+    
+    private const string csvLocation = "images/canvasImage.csv";
+
     private Canvas2DContext _context;
 
     protected BECanvasComponent _canvasReference;
 
     protected bool CanvasLoaded = false;
+
+    protected ITransformer? Transformer => NoughtToNine.TheModel.Transformer;
+
+    protected MLContext? MLContext => NoughtToNine.TheModel.mlContext;
+
+    protected UInt32 Prediction = 10;
+
+    protected async Task PredictImage(){
+        Image image = SixLabors.ImageSharp.Image.Load(new StreamReader(imageLocation).BaseStream);
+
+        List<float> inputList = new();
+
+        int rowcount = 1;
+        image.Mutate(c => c.ProcessPixelRowsAsVector4(row => {
+            if (rowcount!=1 && rowcount!=canvasDimensionLength){
+                for (int x=1 ; x < row.Length-1 ; x++){
+                    pixelRowLength = row.Length;
+                    inputList.Add((float)(1- (0.299 * row[x].X + 0.587 * row[x].Y + 0.114 * row[x].Z)));
+                }
+
+            }
+            rowcount++;
+        }));
+
+        NoughtToNine.ModelInput input = new(){ Pixels = inputList.ToArray() };
+
+        pixelArrayDims = input.Pixels.Length;
+        nonMinMaxPixelCount = input.Pixels.Count(pixel => pixel > 0.1);
+
+        var predictionEngine = MLContext.Model.CreatePredictionEngine<NoughtToNine.ModelInput, NoughtToNine.ModelOutput>(Transformer);
+
+        NoughtToNine.ModelOutput output = null;
+        predictionEngine.Predict(input, ref output);
+
+        this.Prediction = output.label;
+    }
 
     protected async Task ExportImage(MouseEventArgs mea){
         this.dataURL = await JS.InvokeAsync<string>(
@@ -40,7 +98,7 @@
 
         var imageURL = Convert.FromBase64String(dataURL.Replace("data:image/png;base64,", string.Empty));
 
-        StreamWriter sr = new StreamWriter("images/canvasImage.png");
+        StreamWriter sr = new StreamWriter(imageLocation);
         BinaryWriter br = new BinaryWriter(sr.BaseStream);
         br.Write(imageURL);
         sr.Dispose();
@@ -56,14 +114,14 @@
         var floatingClickpointX = mea.ClientX - boundRect.Left;
         var floatingClickpointY = mea.ClientY - boundRect.Top;
 
-        if (floatingClickpointX > 0 && 300 > floatingClickpointX){
+        if (floatingClickpointX > 0 && canvasDimensionLength > floatingClickpointX){
             this.mouseX = floatingClickpointX;
         }
         else{
             this.mouseX = null;
         }
 
-        if (floatingClickpointY > 0 && 300 > floatingClickpointY){
+        if (floatingClickpointY > 0 && canvasDimensionLength > floatingClickpointY){
             this.mouseY = floatingClickpointY;
         }
         else{
@@ -97,15 +155,15 @@
             this._context = await this._canvasReference.CreateCanvas2DAsync();
 
             await this._context.SetFillStyleAsync("black");
-            await this._context.FillRectAsync(0, 0, 300, 300);
+            await this._context.FillRectAsync(0, 0, canvasDimensionLength, canvasDimensionLength);
 
             await this._context.SetFillStyleAsync("white");
-            await this._context.FillRectAsync(5, 5, 290, 290);
+            await this._context.FillRectAsync(1, 1, imageDimensionLength, imageDimensionLength);
 
-            await this._context.SetFillStyleAsync("grey");
+            await this._context.SetFillStyleAsync("black");
 
-            await this._context.SetStrokeStyleAsync("grey");
-            await this._context.SetLineWidthAsync(10);
+            await this._context.SetStrokeStyleAsync("black");
+            await this._context.SetLineWidthAsync(2);
         }
     }
 
