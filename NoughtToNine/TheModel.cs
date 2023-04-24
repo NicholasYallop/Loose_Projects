@@ -4,7 +4,7 @@ namespace NoughtToNine{
     public static class TheModel{
         const string csvFilename = "data/mnist_train.csv";
 
-        private static DataViewSchema? _trainDataSchema;
+        private static DataViewSchema? _trainDataSchema = null;
 
         public static DataViewSchema? trainDataSchema{
             get {
@@ -14,19 +14,24 @@ namespace NoughtToNine{
             private set {_trainDataSchema = value;}
         }
 
-        public static MLContext? mlContext{
-            get {
-                if (_mlContext == null) PopulateModel();   
+        public static MLContext? _mlContext = null;
+
+        public static MLContext mlContext {
+            get{
+                if (_mlContext is null){
+                    _mlContext = new MLContext();
+                    PopulateModel();
+                }
                 return _mlContext;
             }
-            private set {_mlContext = value;}
+            set{
+                _mlContext=value;
+            }
         }
 
-        private static MLContext? _mlContext = new MLContext();
+        private static ITransformer? _transformer = null;
 
-        private static ITransformer? _transformer;
-
-        public static ITransformer? Transformer {
+        public static ITransformer Transformer {
             get {
                 if (_transformer == null) PopulateModel();   
                 return _transformer;
@@ -40,7 +45,7 @@ namespace NoughtToNine{
             if (refreshModel){
                 IDataView? trainData = DataReader.Build<NumberMatrix>(mlContext, csvFilename);
                 if (trainData is null) return;
-                trainDataSchema = trainData.Schema; 
+                _trainDataSchema = trainData.Schema; 
 
                 IEstimator<ITransformer>? estimator = mlContext.MulticlassClassification.Trainers.SdcaMaximumEntropy();
 
