@@ -40,6 +40,8 @@
     private string dataURL = string.Empty;
 
     private const string imageLocation = "images/canvasImage.png";
+
+    private const string intermediateImageLocation = "images/shrunkCanvasImage.png";
     
     private const string csvLocation = "images/canvasImage.csv";
 
@@ -59,21 +61,22 @@
         await ExportImage(null);
 
         Image image = SixLabors.ImageSharp.Image.Load(new StreamReader(imageLocation).BaseStream);
-        image.Mutate(x => x.Resize(canvasPixelLength, canvasPixelLength));
+        image.Mutate(x => x.Crop(Rectangle.FromLTRB(
+            borderWidth*canvasScale,
+            borderWidth*canvasScale,
+            canvasDimensionLength - borderWidth*canvasScale,
+            canvasDimensionLength - borderWidth*canvasScale
+            )));
+        image.Mutate(x => x.Resize(drawAreaPixelLength, drawAreaPixelLength));
+
+        image.Save(intermediateImageLocation);
 
         List<float> inputList = new();
 
-        int rowcount = 1;
-
         image.Mutate(c => c.ProcessPixelRowsAsVector4(row => {
-            if (rowcount <= canvasPixelLength-borderWidth && rowcount > borderWidth){
-                
-                for (int x = borderWidth-1 ; x < row.Length-borderWidth-1 ; x ++){
-                    inputList.Add((float) (1- (0.299 * row[x].X + 0.587 * row[x].Y + 0.114 * row[x].Z)));
-                }
-
+            for (int x = 0 ; x < row.Length ; x ++){
+                inputList.Add((float) (1- (0.299 * row[x].X + 0.587 * row[x].Y + 0.114 * row[x].Z)));
             }
-            rowcount++;
         }));
 
         var greatestPixelValue = (inputList.Max() != 0) ? -1 : inputList.Max();
