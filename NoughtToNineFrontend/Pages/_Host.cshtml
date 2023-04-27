@@ -36,7 +36,35 @@
     <script> MyDOMGetBoundingClientRect = (element, parm) => { return element.getBoundingClientRect(); }; </script>
     <script> MyCanvasGetDataURL = (element, parm) => { return element.toDataURL(); }; </script>
     <script> MyCanvasGetImageData = (element, parm) => { return element.toDataURL(); }; </script>
+    <script>
+        MousePos_Getter = (element, parm) => {
+            window.addEventListener('mousemove', (e) => {
+                DotNet.invokeMethodAsync('NoughtToNineFrontend', 'OnMouseMove', serializeEvent(e))
+            }
+        );}
 
+        serializeEvent = e => {
+            var o = {
+                clientX: e.clientX,
+                clientY: e.clientY
+            };
+            return o;
+        };
+
+        /*
+        const mousePos = { x: undefined, y: undefined };
+
+        MousePos_StartListening = (element, parm) => {
+            window.addEventListener('mousemove', (event) => {
+                mousePos.x = event.clientX; 
+                mousePos.y = event.clientY;
+            });
+        },
+        MousePos_Get = (element, parm) => {
+            return [mousePos.x, mousePos.y];
+        }
+        */
+    </script>
 
 </body>
 

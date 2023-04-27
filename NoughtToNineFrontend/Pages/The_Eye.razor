@@ -6,7 +6,7 @@
 
 <h1>Go on, just try and draw a 1-digit number</h1>
 
-<div tabindex="0" @onmousedown="CanvasMouseDown" @onmouseup="CanvasMouseUp">
+<div tabindex="0" @onpointerdown="CanvasMouseDown" @onpointerup="CanvasMouseUp" onpointermove="OnMouseMove()">
     <BECanvas Width="@canvasDimensionLength" Height="@canvasDimensionLength" @ref="_canvasReference"></BECanvas>
 </div>
 
@@ -29,9 +29,13 @@
 
     private int canvasScale = 10;
 
+    private static double? absoluteMouseX;
+
     private double? mouseX;
 
     private double? mouseXCache;
+    
+    private static double? absoluteMouseY;
 
     private double? mouseY;
 
@@ -150,16 +154,27 @@
         br.Dispose();
     }
 
+    [JSInvokable]
+    public static Task OnMouseMove(PointerLocation pl){
+        absoluteMouseX = pl.clientX;
+        absoluteMouseY = pl.clientY;
+        return Task.CompletedTask;
+    }
+
+
     protected async Task CanvasMouseUp(MouseEventArgs mea){
         mouseHeld = false;
     }
 
     protected async Task CanvasMouseDown(MouseEventArgs mea){
         mouseHeld = true;
-
+        
         while (mouseHeld){
-            await CanvasClick(mea);
+            if (absoluteMouseX != null && absoluteMouseY != null){
+                await CanvasClick(new MouseEventArgs(){ClientX = absoluteMouseX ?? 0, ClientY = absoluteMouseY ?? 0});
+            }
         }
+        
     }
 
     protected async Task CanvasClick(MouseEventArgs mea){        
@@ -189,7 +204,9 @@
 
             await this._context.SetStrokeStyleAsync("black");
             await this._context.SetLineWidthAsync(canvasScale);
-        }
+
+            await JS.InvokeVoidAsync("MousePos_Getter");
+        };
     }
 
     public class BoundingClientRect
@@ -202,5 +219,11 @@
         public double Right { get; set; }
         public double Bottom { get; set; }
         public double Left { get; set; }
+    }
+
+    public class PointerLocation{
+        public double clientX {get;set;}
+
+        public double clientY {get;set;}
     }
 }
